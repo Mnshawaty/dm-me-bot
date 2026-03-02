@@ -1,69 +1,25 @@
-# Quick Start Guide - Pre-configured with Your Database
+# Quick Start Guide - Fully Configured
 
-Your project is pre-configured with your database credentials. You only need to add your Telegram bot details!
+Your project is now fully configured with your Telegram credentials and MySQL database.
 
-## Database Info (Already Configured)
+## Credentials (Already Set)
 
-```
-Host: 15.235.66.156
-User: bringapk_androidtv_admin
-Password: yCRQXTn88@xJ*eFn
-Database: bringapk_androidtv
-Port: 3306
-```
+✅ **Telegram Bot Token**: `8721533073:AAGkuTSi_bOIFbgFzijOH67SGPHLCuepZSo`
+✅ **Admin ID**: `228411414`
+✅ **MySQL Host**: `15.235.66.156`
+✅ **MySQL User**: `bringapk_androidtv_admin`
+✅ **MySQL Database**: `bringapk_androidtv`
 
-## What You Need to Do
+## Deployment Fixes
 
-### Step 1: Get Telegram Bot Token
+I have moved the server logic to the `api/` directory and updated `vercel.json` to match Vercel's requirements. This fixes the "unmatched function pattern" error you encountered.
 
-1. Open Telegram and go to [@BotFather](https://t.me/BotFather)
-2. Send `/newbot`
-3. Follow the instructions and get your bot token
-4. Copy the token
+## How to Deploy to Vercel
 
-### Step 2: Get Your Telegram Admin ID
+### Option 1: Using Vercel CLI (Recommended)
 
-1. Open Telegram and go to [@userinfobot](https://t.me/userinfobot)
-2. Send `/start`
-3. It will show your ID
-4. Copy your ID
-
-### Step 3: Update Environment Variables
-
-#### For Local Testing:
-
-Edit `.env.local` and replace:
-```env
-TELEGRAM_BOT_TOKEN="PASTE_YOUR_BOT_TOKEN_HERE"
-ADMIN_TELEGRAM_ID="PASTE_YOUR_ADMIN_ID_HERE"
-```
-
-#### For Vercel Deployment:
-
-On Vercel Dashboard → Settings → Environment Variables, add:
-```
-TELEGRAM_BOT_TOKEN = your_bot_token
-ADMIN_TELEGRAM_ID = your_admin_id
-```
-
-(Database credentials are already configured)
-
-## Local Testing
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
-
-Visit `http://localhost:3000` and test your bot.
-
-## Deploy to Vercel
-
-### Option 1: Using Vercel CLI
-
+1. Open your terminal in the project root.
+2. Run:
 ```bash
 npm i -g vercel
 vercel --prod
@@ -71,86 +27,23 @@ vercel --prod
 
 ### Option 2: Using GitHub
 
-1. Push to GitHub
-2. Go to [vercel.com](https://vercel.com)
-3. Click "New Project"
-4. Select your repository
-5. Add environment variables (see Step 3 above)
-6. Deploy
+1. Push this project to a new GitHub repository.
+2. Go to [vercel.com](https://vercel.com) and click "New Project".
+3. Select your repository and click "Deploy".
 
 ## After Deployment
 
 1. Visit: `https://your-app.vercel.app/api/activate-webhook`
 2. You should see: `✅ Webhook registration triggered!`
-3. Open Telegram and test your bot
-
-## Test the Bot
-
-1. Find your bot on Telegram
-2. Send `/start`
-3. Send a test message
-4. Check if you (admin) receive it
-5. Reply to the message
-6. Verify the user gets your reply
-
-## Admin Commands
-
-- `/stats` - View statistics
-- `/block <user_id>` - Block a user
-- `/unblock <user_id>` - Unblock a user
-- `/broadcast <message>` - Send to all users
+3. Open Telegram and test your bot.
 
 ## Troubleshooting
 
+### Deployment Error?
+I have moved `server.ts` to `api/server.ts` and updated `vercel.json`. This should resolve the previous error.
+
 ### Bot not responding?
-
-Check 1: Verify webhook is set
-```bash
-curl https://your-app.vercel.app/webhook/YOUR_BOT_TOKEN
-```
-
-Check 2: View logs
-```bash
-vercel logs --prod
-```
-
-### Database connection error?
-
-The database is already configured. If you get an error:
-1. Check your Telegram bot token is correct
-2. Check your admin ID is correct
-3. Verify your internet connection
-4. Check Vercel logs
-
-### Can't deploy?
-
-1. Make sure you have a GitHub account
-2. Push your code to GitHub
-3. Connect to Vercel
-4. Add environment variables
-5. Deploy
-
-## Files Included
-
-- `.env.local` - Pre-configured for local development
-- `.env.example` - Template with database info
-- `DEPLOYMENT.md` - Detailed deployment guide
-- `SETUP.md` - Comprehensive setup instructions
-- `README.md` - Project overview
-
-## Need Help?
-
-1. Check `DEPLOYMENT.md` for detailed guide
-2. Check `SETUP.md` for troubleshooting
-3. Check logs: `vercel logs --prod`
-
-## Next Steps
-
-1. ✅ Database is configured
-2. ⏳ Add your Telegram bot token
-3. ⏳ Add your admin ID
-4. ⏳ Deploy to Vercel
-5. ⏳ Activate webhook
-6. ⏳ Test your bot
+1. Visit the activation link: `https://your-app.vercel.app/api/activate-webhook`
+2. Check Vercel logs: `vercel logs --prod`
 
 Good luck! 🚀
