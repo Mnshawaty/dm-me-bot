@@ -1,0 +1,5 @@
+{
+  "name": "Android TV Admin Bot",
+  "description": "A private Telegram relay bot that acts as a secure gateway between users and an admin, allowing for anonymous communication and management.",
+  "requestFramePermissions": []
+}
