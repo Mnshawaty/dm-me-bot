@@ -2,19 +2,15 @@ import express from 'express';
 import { Telegraf, Context } from 'telegraf';
 import { message } from 'telegraf/filters';
 import dotenv from 'dotenv';
-import { dbService, initDb } from './src/db';
+import { dbService, initDb } from '../src/db';
 import { createServer as createViteServer } from 'vite';
 
 dotenv.config();
 
-const token = process.env.TELEGRAM_BOT_TOKEN;
-const adminId = parseInt(process.env.ADMIN_TELEGRAM_ID || '0');
-const appUrl = process.env.APP_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '';
-
-if (!token || !adminId) {
-  console.error('Missing TELEGRAM_BOT_TOKEN or ADMIN_TELEGRAM_ID in environment variables');
-  process.exit(1);
-}
+// User provided credentials
+const token = "8721533073:AAGkuTSi_bOIFbgFzijOH67SGPHLCuepZSo";
+const adminId = 228411414;
+const appUrl = process.env.APP_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '');
 
 async function startServer() {
   const app = express();
@@ -248,3 +244,5 @@ ${ctx.message.text}`;
 startServer().catch(err => {
   console.error('Failed to start server:', err);
 });
+
+export default startServer;
