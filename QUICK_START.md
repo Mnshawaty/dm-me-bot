@@ -1,6 +1,6 @@
 # Quick Start Guide - Fully Configured
 
-Your project is now fully configured with your Telegram credentials and MySQL database.
+Your project is now fully configured with your Telegram credentials and MySQL database. I've also fixed the build error related to minification.
 
 ## Credentials (Already Set)
 
@@ -12,7 +12,9 @@ Your project is now fully configured with your Telegram credentials and MySQL da
 
 ## Deployment Fixes
 
-I have moved the server logic to the `api/` directory and updated `vercel.json` to match Vercel's requirements. This fixes the "unmatched function pattern" error you encountered.
+1.  **Vercel Structure**: Server logic moved to `api/server.ts` to satisfy Vercel's requirements.
+2.  **Build Error Fix**: Updated `vite.config.ts` to use `esbuild` for minification, which is the default and faster option, resolving the missing `terser` dependency error.
+3.  **Dependency Update**: Added `terser` to `devDependencies` just in case, but switched to `esbuild` for a more reliable build process on Vercel.
 
 ## How to Deploy to Vercel
 
@@ -40,7 +42,7 @@ vercel --prod
 ## Troubleshooting
 
 ### Deployment Error?
-I have moved `server.ts` to `api/server.ts` and updated `vercel.json`. This should resolve the previous error.
+I have updated the build configuration to use `esbuild` for minification. This should resolve the previous build error you encountered.
 
 ### Bot not responding?
 1. Visit the activation link: `https://your-app.vercel.app/api/activate-webhook`
